@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ProjectFeature from '../components/ProjectFeature.astro';
+
+const projects = [
+  {
+    eyebrow: 'Forecasting · Higher Education',
+    title: 'Forecasting student demand for better academic planning',
+    summary: 'A decision-support system that combines historical enrollment, course attributes and machine learning to anticipate demand and improve planning decisions.',
+    metrics: [
+      { value: '4', label: 'model families compared' },
+      { value: '2017–2025', label: 'historical window' },
+      { value: '1', label: 'planning dashboard' }
+    ],
+    tags: ['Python', 'Forecasting', 'Gradient Boosting', 'Power BI'],
+    index: '01',
+    visual: 'forecast'
+  },
+  {
+    eyebrow: 'Research · Health Economics',
+    title: 'Measuring hospital efficiency with Data Envelopment Analysis',
+    summary: 'An input-oriented VRS model designed to compare operational efficiency across public and private healthcare institutions over time.',
+    metrics: [
+      { value: '57', label: 'healthcare institutions' },
+      { value: '285', label: 'institution-year observations' },
+      { value: '2019–2023', label: 'analysis period' }
+    ],
+    tags: ['R', 'DEA', 'Efficiency Analysis', 'Health Data'],
+    index: '02',
+    visual: 'dea'
+  },
+  {
+    eyebrow: 'Machine Learning · Anomaly Detection',
+    title: 'Detecting unusual patterns in pharmaceutical transactions',
+    summary: 'An unsupervised learning pipeline that identifies atypical pricing and purchasing behavior, helping analysts focus review efforts where they matter most.',
+    metrics: [
+      { value: '0.85%', label: 'records flagged as anomalous' },
+      { value: '51.3%', label: 'anomalies concentrated' },
+      { value: '2', label: 'clustering approaches' }
+    ],
+    tags: ['Python', 'DBSCAN', 'HDBSCAN', 'Anomaly Detection'],
+    index: '03',
+    visual: 'anomaly'
+  }
+];
+---
+<BaseLayout
+  title="Angela Burgos — Applied Data Scientist"
+  description="Portfolio of Angela Burgos, economist and applied data scientist building analytical solutions for better decisions."
+>
+  <main id="top">
+    <div class="page-shell">
+      <Header />
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy" data-reveal>
+          <p class="kicker">Economist · Applied Data Scientist · Business Intelligence</p>
+          <h1 id="hero-title">Turning complex data into <em>clear decisions.</em></h1>
+          <p class="hero-intro">I design analytical solutions that help organizations understand complex systems, anticipate change and act with confidence.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Explore selected work</a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+          <div class="availability"><span></span> Open to international opportunities in data, analytics and digital transformation.</div>
+        </div>
+        <div class="portrait-card" data-reveal>
+          <div class="portrait-placeholder">
+            <div class="portrait-monogram">AB</div>
+            <p>Editorial portrait<br />to be added</p>
+          </div>
+          <div class="portrait-caption">
+            <span>Bogotá, Colombia</span>
+            <span>Working toward Germany · 2027</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="quote-section" aria-label="Featured quote" data-reveal>
+        <blockquote>“The most valuable commodity I know of is information.”</blockquote>
+        <p>— Gordon Gekko, <cite>Wall Street</cite> (1987)</p>
+      </section>
+
+      <section class="work-section" id="work">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects built around real decisions.</h2>
+          <p>Each case combines analytical rigor, business context and a clear path from data to action.</p>
+        </div>
+        <div class="projects-list">
+          {projects.map((project) => <ProjectFeature {...project} />)}
+        </div>
+      </section>
+
+      <section class="split-section" id="research" data-reveal>
+        <div>
+          <p class="eyebrow">Research</p>
+          <h2>Applied methods, not methods in isolation.</h2>
+        </div>
+        <div>
+          <p>My work connects statistics, economics and machine learning with operational questions in education, healthcare and organizational decision-making.</p>
+          <a class="text-link" href="#contact">Discuss research and collaboration <span>↗</span></a>
+        </div>
+      </section>
+
+      <section class="teaching-section" id="teaching" data-reveal>
+        <div class="section-heading compact">
+          <p class="eyebrow">Teaching</p>
+          <h2>Making technical ideas useful and understandable.</h2>
+        </div>
+        <div class="teaching-grid">
+          <article><span>01</span><h3>Deep Learning for Organizations</h3><p>Neural networks, computer vision, sequence models and practical business applications.</p></article>
+          <article><span>02</span><h3>Machine Learning in Economics</h3><p>Applied modeling, explainability and decision-focused analytical thinking.</p></article>
+          <article><span>03</span><h3>Analytics with Python & BI</h3><p>From data preparation to dashboards, automation and reproducible workflows.</p></article>
+        </div>
+      </section>
+
+      <section class="about-section" id="about" data-reveal>
+        <div class="about-number">10+</div>
+        <div class="about-copy">
+          <p class="eyebrow">About</p>
+          <h2>Years connecting data, education and organizational improvement.</h2>
+          <p>I am an economist with graduate training in applied statistics and data science. My experience spans institutional analytics, forecasting, business intelligence, research, automation and teaching.</p>
+          <p>I am especially interested in roles where analytical work must be both technically sound and useful to people making real decisions.</p>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2>Let’s build something that turns information into action.</h2>
+        <p>For opportunities in data analytics, business intelligence, applied data science and digital transformation.</p>
+        <div class="contact-links">
+          <a href="mailto:your.email@example.com">Email</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </section>
+
+      <footer>
+        <p>© 2026 Angela Burgos</p>
+        <a href="#top">Back to top ↑</a>
+      </footer>
+    </div>
+  </main>
+</BaseLayout>
