@@ -1,0 +1,59 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  metrics: { value: string; label: string }[];
+  tags: string[];
+  index: string;
+  visual: 'forecast' | 'dea' | 'anomaly';
+}
+const { eyebrow, title, summary, metrics, tags, index, visual } = Astro.props;
+---
+<article class="project-feature" data-reveal>
+  <div class={`project-visual visual-${visual}`} aria-hidden="true">
+    <div class="visual-label">Case {index}</div>
+    {visual === 'forecast' && (
+      <svg viewBox="0 0 680 420" role="img">
+        <path class="grid" d="M60 80H630M60 160H630M60 240H630M60 320H630M140 45V360M260 45V360M380 45V360M500 45V360" />
+        <path class="line muted" d="M70 306 C150 265, 190 292, 250 220 S370 180, 425 198 S535 110, 615 92" />
+        <path class="line accent" d="M70 326 C140 310, 205 250, 250 268 S360 225, 425 170 S535 150, 615 70" />
+        <circle cx="615" cy="70" r="8" class="dot" />
+      </svg>
+    )}
+    {visual === 'dea' && (
+      <svg viewBox="0 0 680 420" role="img">
+        <path class="axis" d="M75 345H620M75 345V60" />
+        <path class="frontier" d="M95 310 C170 180, 260 130, 390 95 S525 80, 610 72" />
+        {[[140,260],[210,210],[280,250],[340,155],[405,190],[470,120],[535,150],[585,96]].map(([x,y]) => <circle cx={x} cy={y} r="8" class="bubble" />)}
+      </svg>
+    )}
+    {visual === 'anomaly' && (
+      <svg viewBox="0 0 680 420" role="img">
+        {Array.from({ length: 44 }).map((_, i) => {
+          const x = 90 + ((i * 83) % 510);
+          const y = 80 + ((i * 47) % 260);
+          const anomaly = i % 13 === 0;
+          return <circle cx={x} cy={y} r={anomaly ? 10 : 5} class={anomaly ? 'anomaly' : 'point'} />;
+        })}
+      </svg>
+    )}
+  </div>
+  <div class="project-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h3>{title}</h3>
+    <p class="project-summary">{summary}</p>
+    <div class="metrics" aria-label="Project highlights">
+      {metrics.map((metric) => (
+        <div>
+          <strong>{metric.value}</strong>
+          <span>{metric.label}</span>
+        </div>
+      ))}
+    </div>
+    <div class="tag-list">
+      {tags.map((tag) => <span>{tag}</span>)}
+    </div>
+    <a class="text-link" href="#contact">Case study coming soon <span>↗</span></a>
+  </div>
+</article>
